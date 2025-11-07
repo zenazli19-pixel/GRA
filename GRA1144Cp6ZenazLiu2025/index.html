@@ -5,20 +5,35 @@
 <title>Aritzia Dress | Zenaz Liu, 2025</title>
 <style type="text/css">
 wrapper {
-	width: 1366px;
-	margin: 0 auto;
-	display: block;
-	padding: 0px;
-	background-color: white;
+    width: 1366px;
+    margin: 0 auto;
+    display: block;
+    padding: 0px;
+    background-color: cream;
 }
 footer {
     margin: 0px;
-    padding: 0px;
     width: 1366px;
-  	font-family: "Inter", sans-serif;
-  	font-optical-sizing: auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
   	font-weight: <weight>;
-  	font-style: normal;
+    font-style: normal;
+    text-align: center;
+    padding-top: 0px;
+    font-size: 12px;
+}
+ul {
+    font-size: 15px;
+    margin-left: -17px;
+}
+h1 {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    display: inline-block;
+    text-align: left;
+    padding-top: 0px;
+    margin-left: 30px;
 }
 main {
 	margin: 0px;
@@ -33,16 +48,22 @@ header {
     background-color: white;
 }
 body {
-	margin: 0px;
-	padding: 0px;
-	width: 1366px;
-	height: 1080px;
+    margin: 0px;
+    padding: 0px;
 }
 nav ul li {
 	display: inline-block;
 	padding-left: 88px;
 	text-align: left;
 	clear: left;
+}
+nav ul li:hover {
+    color: black;
+    text-decoration: underline;
+}
+.details {
+    padding-top: 27px;
+    margin-left: 3px;
 }
 nav {
 	padding-left: 0px;
@@ -52,24 +73,123 @@ nav {
   	font-style: normal;
 }
 h2 {
-  font-family: "Inter", sans-serif;
-  font-optical-sizing: auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
   font-weight: <weight>;
-  font-style: normal;
+    font-style: normal;
+    font-size: 35px;
+    padding-left: 3px;
+}
+.quantity {
+    padding-top: 26px;
+}
+.desc {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+  	font-weight: <weight>;
+    font-style: normal;
+    text-align: left;
+    font-size: 16px;
+    padding-top: 0px;
+    padding-left: 7px;
 }
 h1 {
-	font-family: "Inter", sans-serif;
-	font-optical-sizing: auto;
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
   font-weight: <weight>;
-	font-style: normal;
-	margin-left: 52px;
-	margin-top: 13px;
+    font-style: normal;
+    margin-top: 13px;
+    padding-left: 0px;
+}
+h1:hover {
+    text-decoration: underline;
 }
 .logo {
 	margin-left: 49px;
 	margin-top: 46px;
 }
 
+nav {
+    padding-top: 24px;
+    margin-top: 2px;
+}
+.photos img {
+    position: absolute;
+    width: 100%;
+    height: auto;
+}
+.photos {
+    position: relative;
+    margin-top: 43px;
+}
+section {
+    width: 650px;
+    display: inline-block;
+    vertical-align: top;
+    height: 900px;
+}
+button {
+    width: 50px;
+    border-radius: 25px;
+    height: 50px;
+    border: medium solid white;
+    margin-left: 10px;
+}
+button:hover {
+    border-color: rgba(186,187,196,1.00);
+    border-width: thick;
+}
+.light-bluebtn {
+    background-color: #dce4e8;
+}
+.blackbtn {
+    background-color: black;
+}
+.polka-dotbtn {
+    background-image: url(images/polka-dot.png);
+    background-size: cover;
+}
+.bagbtn {
+    border-radius: 0px;
+    width: 226px;
+    margin-top: 1px;
+    margin-left: 3px;
+}
+h3 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+  	font-weight: <weight>;
+    font-style: normal;
+    text-align: left;
+    font-size: 20px;
+    padding-left: 6px;
+    font-weight: 500;
+}
+.description {
+    padding-left: 51px;
+    padding-top: 61px;
+    margin-top: 29px;
+}
+.sizes {
+    padding-top: 32px;
+}
+.colors {
+    padding-top: 24px;
+}
+.price {
+    font-size: 25px;
+    padding-left: 7px;
+    margin-top: -10px;
+}
+.bookmark {
+    padding-left: 35px;
+    margin-left: -3px;
+}
+.search {
+    padding-left: 810px;
+    padding-top: 31px;
+    margin-left: 117px;
+}
 </style>
 <script type="text/javascript">
 function MM_swapImgRestore() { //v3.0
@@ -106,8 +226,8 @@ function MM_showHideLayers() { //v9.0
 <body onLoad="MM_preloadImages('images/dress-polka-dot-back.jpg','images/dress-light-blue-back.jpg','images/dress-black-back.jpg')">
 <wrapper>
 <header>
-	<img src="images/aritzia-logo.jpg" alt="Aritzia Logo" width="192" height="38" class="logo">
-  <h1>Cannelle Dress</h1>
+	<img src="images/aritzia-logo.jpg" alt="Aritzia Logo" width="192" height="38" class="logo"><img src="images/search.png" alt="" width="37" height="37" class="search"><img src="images/bookmark.png" alt="" width="26" height="59" class="bookmark">
+  <h1>SIGN IN</h1>
 </header>
 	
 <nav>
@@ -123,17 +243,18 @@ function MM_showHideLayers() { //v9.0
 </nav>
 	
 <main>
-<section class="photos">
-<div>
-<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-polka-dot','','images/dress-polka-dot-back.jpg',1)"><img src="images/dress-polka-dot-front.jpg" alt="" width="700" height="960" id="dress-polka-dot"></a></div>
-<div>
-<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-light-blue','','images/dress-light-blue-back.jpg',1)"><img src="images/dress-light-blue-front.jpg" alt="" width="700" height="960" id="dress-light-blue"></a></div>
-<div>
-<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-black','','images/dress-black-back.jpg',1)"><img src="images/dress-black-front.jpg" alt="" width="700" height="960" id="dress-black"></a>
-</div>
-</section>
+<section class="photos"> <a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-light-blue','','images/dress-light-blue-back.jpg',1)"><img src="images/dress-light-blue-front.jpg" alt="" width="700" height="960" id="dress-light-blue"></a>
+<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-black','','images/dress-black-back.jpg',1)"><img src="images/dress-black-front.jpg" alt="" width="700" height="960" id="dress-black"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('dress-polka-dot','','images/dress-polka-dot-back.jpg',1)"><img src="images/dress-polka-dot-front.jpg" alt="" width="700" height="960" id="dress-polka-dot"></a></section>
 	
 <section class="description">
+
+<h2>Cannelle Dress</h2>
+<p class="price">$168</p>
+<h3 class="details">Details</h3>
+<p class="desc">This is a lined slip dress with ruffle detailing and adjustable straps. It's cut from Fête Chiffon™ — lightweight, semi-sheer fabric with an ethereal drape. This version is made from 100% recycled polyester.</p>
+
+<h3 class="colors">Colors - Black</h3>
+
 <button class="polka-dotbtn" onClick="MM_showHideLayers('dress-polka-dot','','show','dress-light-blue','','hide','dress-black','','hide')"></button>
 
 <button class="light-bluebtn" onClick="MM_showHideLayers('dress-polka-dot','','hide','dress-light-blue','','show','dress-black','','hide')"></button>
@@ -141,6 +262,7 @@ function MM_showHideLayers() { //v9.0
 <button class="blackbtn" onClick="MM_showHideLayers('dress-polka-dot','','hide','dress-light-blue','','hide','dress-black','','show')"></button>
 
 <div id="sizebtn">
+<h3 class="sizes">Sizes </h3>
 <button class="smallbtn">S</button>
 <button class="mediumbtn">M</button>
 <button class="largebtn">L</button>
@@ -149,12 +271,9 @@ function MM_showHideLayers() { //v9.0
 </div>	
 
 <div id="buybtn">
+<h3 class="quantity">Quantity</h3>
 <button class="bagbtn"><span style="font-weight: 400; font-size:16px">Add to Bag</span></button>	
 </div>
-	
-<h2>Cannelle Dress</h2>
-    <p class="price">$168</p>
-    <p class="desc">A sleek knit dress with a flattering silhouette and soft hand—made for day to night.</p>
 </section>
 </main>
 	
