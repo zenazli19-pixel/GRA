@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nature's Garden | Zenaz Liu, 2026</title>
 	<link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -10,50 +11,63 @@ body {
     margin: 0;
 }
 header {
-    height: 50px;
-    background-color: lightgoldenrodyellow;
+    min-height: 150px;
+    height: auto;
+ 	line-height: 0;
+    background-color: rgba(249,210,217,1.00);
 }
 nav {
-    background-color: black;
+    background-color: ;
+	background-color: #3e5d93;
+	height: 55px;
 }
 nav ul a {
-    color: white;
-    text-decoration: none;
-}
-#about {
-    height: 600px;
-    background-color: orangered;
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	padding-left: 34px;
+	padding-top: 5px;
 }
 #gallery {
 	height: 600px;
-	background-color: teal;
-	background-image: url(images/Rose.jpg);
+	background-color: rgba(249,210,217,1.00);
+	background-image: url(images/flower.jpeg);
 }
 #contact {
 	height: 600px;
-	background-color: aqua;
-	background-image: url(images/peony.png);
+	background-color: rgba(249,210,217,1.00);
+	background-image: url(images/red.jpeg);
 	background-repeat: no-repeat;
-	background-size: 513px 605px;
+	background-size: 110%;
+	background-position: center 20%;
 }
+
 footer {
-    height: 200px;
-    background-color: limegreen;
+	height: 100px;
+	background-color: rgba(249,210,217,1.00);
+	font-size: 18px;
+	text-align: center;
+	padding-top: 43px;
+	padding-left: 42px;
+	padding-right: 42px;
+	color:#550115;
 }
 ul a li {
     padding: 10px;
     list-style-type: none;
+	color:#f2dddc;
 }
 ul a li:hover {
-    background-color: red;
+	background-color: #7B98C7;
 }
 nav ul {
     padding: 0;
     margin: 0;
 }
-wrapper {
-    width: 80%;
-    margin: auto;
+#wrapper {
+    max-width: 1200px;
+	width:100%;
+  	margin: 0 auto;
     display: block;
 }
 .topnav.responsive a{
@@ -79,11 +93,33 @@ wrapper {
 	color:white;
 }
 #about {
-	background-image: url(images/280686783_1931284433723587_7770596890000016420_n-1.jpg);
+	height: 600px;
+	background-color: rgba(249,210,217,1.00); 								background-image: url(images/pink.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center 20%;
 }
 #gallery {
 	background-size: 512px 609px;
 	background-repeat: no-repeat;
+	background-image: url(images/flower.jpeg);
+	background-size: 100%;
+	background-position: center 20%;
+}
+.logo {
+	display: block;
+	max-width: 400px;
+	width: 60%;
+	height: auto;
+	margin: 0px auto;
+	padding-top: 5px;
+}
+#about, #gallery, #contact {
+    border-bottom: 3px solid #3e5d93;
+}
+	main {
+    gap: 3px;
+    background-color: #3e5d93;
 }
 @media (min-width:1000px) {
 .topnav a:not(:first-child),.topnav.responsive a:not(:first-child) {
@@ -111,8 +147,10 @@ function myFunction() {
 </head>
 
 <body>
-<wrapper>
-  <header></header>
+<div id="wrapper">
+  <header><img src="images/logo.png" alt="" class="logo">
+
+  </header>
   <nav class="topnav responsive" id="myTopnav">
   <a href="javascript:void(0);" class="icon"
      onclick="myFunction()">
@@ -129,7 +167,10 @@ function myFunction() {
     <section id="gallery"></section>
     <section id="contact"></section>
   </main>
-  <footer></footer>
-</wrapper>
+  <footer>
+	&copy; 2026, Zenaz Liu
+	  This is a fictitious web page created solely for the purpose of education and training. All products and people associated with this web page are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.
+	</footer>
+</div>
 </body>
 </html>
