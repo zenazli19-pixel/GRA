@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML5 Drag-and-Drop Project | Zenaz Liu, 2026</title>
+		<!---- copied from D2L ---->
+	<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+</script>
+	<!---- copied from D2L ---->
+	
+
+	<!---- once youre boxes are in and you change the (wrapper div) display to inline-block it won't be stacked side by side like they're suppose to. Go to T for Text in the CSS Designer and change the selector (wrapper div) to vertical-align: top --->
+	
+	<!---- make sure your drag images are the same width and height or they won't line up correctly ----> 
+	
+<style type="text/css">
+body {
+	background-color: #FFE4A3;
+}
+wrapper {
+	width: 1920px;
+	margin: auto;
+	display: block;
+}
+wrapper div {
+	width: 900px;
+	border: thin solid black;
+	height: 600px;
+	display: inline-block;
+	margin-top: 25px;
+	margin-right: 25px;
+	margin-bottom: 25px;
+	margin-left: 25px;
+	vertical-align: top;
+}
+
+div img {
+	width: 100%;
+	height: auto;
+}
+</style>
+</head>
+
+<body>
+<wrapper>
+  
+	<!----copy and paste  ondrop"drop(event)" ondragover="allowDrop(event)" in each div after the quotation at the end of  id name (id"drop1") from D2L---->
+	<!---- make sure to copy the space in front of  ondrop" ---->
+	<!---- copy and paste  draggable="true" ondragstart="drag(event)" at the ending quotation of the image id (id="drag1") also in D2L ---->
+
+	<div id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="img_w3slogo.gif" alt="" width="88" height="31" id="drag1" draggable="true" ondragstart="drag(event)"></div>
+	<div id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+	<div id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)"><img src="img_w3slogo-rev.gif" alt="" width="88" height="31" id="drag2" draggable="true" ondragstart="drag(event)"></div>
+	<div id="drop4" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+</wrapper>
+</body>
+</html>
