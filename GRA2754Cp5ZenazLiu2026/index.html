@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Stained Glass Puzzle | Zenaz Liu, 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background-color: #1a1a1a;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+h1 {
+  color: #c9a84c;
+  font-size: 2.2rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #888;
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+}
+
+.undo-btn {
+  margin-bottom: 30px;
+  background: none;
+  border: 1px solid #555;
+  color: #888;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 8px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.undo-btn:hover {
+  border-color: #c9a84c;
+  color: #c9a84c;
+}
+
+.board-label {
+  color: #c9a84c;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  gap: 3px;
+  background-color: #111;
+  padding: 3px;
+  border: 1px solid #333;
+  margin-bottom: 50px;
+}
+
+.drop-zone {
+  width: 200px;
+  height: 200px;
+  background-color: #2a2a2a;
+  border: 1px dashed #444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+
+.drop-zone.drag-over {
+  background-color: #3a3020;
+  border-color: #c9a84c;
+}
+
+.drop-zone.filled {
+  border: none;
+}
+
+.drop-zone .piece-number {
+  color: #444;
+  font-size: 1.5rem;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.tray-label {
+  color: #c9a84c;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.tray {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  max-width: 700px;
+  background-color: #111;
+  border: 1px solid #333;
+  padding: 20px;
+}
+
+.drag-piece {
+  width: 200px;
+  height: 200px;
+  cursor: grab;
+  overflow: hidden;
+  border: 1px solid #555;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+}
+
+.drag-piece:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  border-color: #c9a84c;
+}
+
+.drag-piece:active {
+  cursor: grabbing;
+  opacity: 0.8;
+}
+
+.drag-piece img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+
+.drop-zone img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+}
+footer {
+  margin-top: 50px;
+  color: #c9a84c;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  width: 100%;
+  max-width: 700px;
+}
+</style>
+</head>
+<body>
+
+<h1>Stained Glass</h1>
+<p class="subtitle">arrange the pieces to reveal the window</p>
+
+<button class="undo-btn" id="undoBtn" onclick="undoAll()" style="display:none;">Undo</button>
+
+<p class="board-label">Assembly Board</p>
+<div class="board" id="board">
+  <div class="drop-zone" id="drop1" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="1"><span class="piece-number">1</span></div>
+  <div class="drop-zone" id="drop2" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="2"><span class="piece-number">2</span></div>
+  <div class="drop-zone" id="drop3" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="3"><span class="piece-number">3</span></div>
+  <div class="drop-zone" id="drop4" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="4"><span class="piece-number">4</span></div>
+  <div class="drop-zone" id="drop5" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="5"><span class="piece-number">5</span></div>
+  <div class="drop-zone" id="drop6" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="6"><span class="piece-number">6</span></div>
+  <div class="drop-zone" id="drop7" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="7"><span class="piece-number">7</span></div>
+  <div class="drop-zone" id="drop8" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="8"><span class="piece-number">8</span></div>
+  <div class="drop-zone" id="drop9" ondrop="drop(event)" ondragover="allowDrop(event)" data-slot="9"><span class="piece-number">9</span></div>
+</div>
+
+<p class="tray-label">Puzzle Pieces — drag each one up to the board</p>
+<div class="tray" id="tray"></div>
+
+<script>
+const pieces = [
+  { id: 1, src: 'images/stainedglass_01.png' },
+  { id: 2, src: 'images/stainedglass_02.png' },
+  { id: 3, src: 'images/stainedglass_03.png' },
+  { id: 4, src: 'images/stainedglass_04.png' },
+  { id: 5, src: 'images/stainedglass_05.png' },
+  { id: 6, src: 'images/stainedglass_06.png' },
+  { id: 7, src: 'images/stainedglass_07.png' },
+  { id: 8, src: 'images/stainedglass_08.png' },
+  { id: 9, src: 'images/stainedglass_09.png' }
+];
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function buildTray() {
+  const tray = document.getElementById('tray');
+  tray.innerHTML = '';
+  const shuffled = shuffle([...pieces]);
+  shuffled.forEach(p => {
+    const div = document.createElement('div');
+    div.className = 'drag-piece';
+    div.id = `piece${p.id}`;
+    div.draggable = true;
+    div.setAttribute('data-piece', p.id);
+    div.ondragstart = drag;
+    div.innerHTML = `<img src="${p.src}" alt="piece ${p.id}">`;
+    tray.appendChild(div);
+  });
+}
+
+function allowDrop(ev) {
+  ev.preventDefault();
+  ev.currentTarget.classList.add('drag-over');
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData('pieceId', ev.currentTarget.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  const zone = ev.currentTarget;
+  zone.classList.remove('drag-over');
+
+  const pieceId = ev.dataTransfer.getData('pieceId');
+  const piece = document.getElementById(pieceId);
+  if (!piece) return;
+
+  const existing = zone.querySelector('.drag-piece');
+  if (existing) {
+    document.getElementById('tray').appendChild(existing);
+  }
+
+  const label = zone.querySelector('.piece-number');
+  if (label) label.remove();
+
+  zone.appendChild(piece);
+  zone.classList.add('filled');
+  checkWin();
+}
+
+function checkWin() {
+  const zones = document.querySelectorAll('.drop-zone');
+  let complete = true;
+  zones.forEach(zone => {
+    if (!zone.querySelector('.drag-piece')) complete = false;
+  });
+  if (complete) {
+    document.getElementById('undoBtn').style.display = 'inline-block';
+  }
+}
+
+function undoAll() {
+  document.querySelectorAll('.drop-zone').forEach(zone => {
+    zone.innerHTML = '';
+    zone.classList.remove('filled');
+    const num = zone.getAttribute('data-slot');
+    const span = document.createElement('span');
+    span.className = 'piece-number';
+    span.textContent = num;
+    zone.appendChild(span);
+  });
+  document.getElementById('undoBtn').style.display = 'none';
+  buildTray();
+}
+
+document.getElementById('tray').addEventListener('dragover', function(ev) {
+  ev.preventDefault();
+});
+
+document.getElementById('tray').addEventListener('drop', function(ev) {
+  ev.preventDefault();
+  const pieceId = ev.dataTransfer.getData('pieceId');
+  const piece = document.getElementById(pieceId);
+  if (piece) {
+    const parent = piece.parentElement;
+    if (parent && parent.classList.contains('drop-zone')) {
+      parent.classList.remove('filled');
+      const num = parent.getAttribute('data-slot');
+      const span = document.createElement('span');
+      span.className = 'piece-number';
+      span.textContent = num;
+      parent.appendChild(span);
+    }
+    document.getElementById('tray').appendChild(piece);
+  }
+});
+
+document.querySelectorAll('.drop-zone').forEach(zone => {
+  zone.addEventListener('dragleave', function() {
+    this.classList.remove('drag-over');
+  });
+});
+
+buildTray();
+</script>
+<footer>
+  <p> &copy; 2026, Zenaz Liu
+This is a fictitious web page created solely for the purpose of education and training. All products and people associated with this web page are also fictitious. Any resemblance to real brands, products, or people is purely coincidental. Information provided about the product is also fictitious and should not be construed to be representative of actual products on the market in a similar product category.</p>
+</footer>
+</body>
+</html>
